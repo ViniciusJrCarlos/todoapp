@@ -1,0 +1,76 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+
+mainClassName = 'todoapp.Main'
+
+repositories {
+    jcenter()
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.hibernate:hibernate-core:3.6.7.Final'
+    //implementation ' org.gradle.api.tasks.bundling'
+}
+
+
+
+//tasks.named('wrapper') {
+  //  distributionType = Wrapper.DistributionType.ALL
+//}
+
+//dependencies {
+    
+    //implementation 'services.gradle.org/distributions/gradle-8.0.1'
+//
+//buildscript {
+  //repositories {
+   /// maven {
+    //  url "https://plugins.gradle.org/m2/"
+   // }
+  //}
+  //dependencies {
+   /// classpath "cz.kubacki.gradle.plugins:gradle-nbm-plugin:1.17.0"
+  //}
+//}
+
+//apply plugin: "cz.kubacki.nbm"
+
+//dependencies {
+    
+    //implementation ' org.gradle.api.tasks.bundling'
+//}
+
+//plugins {
+  //id 'application'
+//}
+
+//application {
+ // mainClass = 'Main'
+//}
+
+//tasks.withType(JavaExec) {
+  //standardInput = System.in
+//}
+
+dependencies {
+    testImplementation     'junit:junit:4.13'
+    
+    //implementation 'io.github.icemap:mysql-connector-java:8.0.20'
+    //compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+  //implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
+  // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
+    //implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.31'
+    
+// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+//implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.20'
+    implementation 'mysql:mysql-connector-java:8.0.32'
+
+
+}
