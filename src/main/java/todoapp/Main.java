@@ -31,12 +31,12 @@ public class Main {
         
         ProjectController projectController = new ProjectController();
         Project project = new project();
-       project.setName("projeto teeste");
-       project.setDescription("descricao");
-       //roject.setCreatedAt(new Date());
+        //project.setName("projeto teeste 2");
+       //project.setDescription("descricao");
+       //project.setCreatedAt(new Date());
         
         
-       projectController.save(project);
+       //projectController.save(project);
         
         //project.setName("Novo nome do projeto");
         //projectController.update(project);

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package model;
-
+//import java.sql.Date;
 import java.util.Date;
 
 //arquivo novo
@@ -63,7 +63,7 @@ public class Project {
         this.description = description;
     }
 
-    public Date getcreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
@@ -81,7 +81,8 @@ public class Project {
 
     @Override
     public String toString() {
-        return "Project{" + "id_projects=" + id_projects + ", name=" + name + ", description=" + description + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
+        //return "Project{" + "id_projects=" + id_projects + ", name=" + name + ", description=" + description + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
+        return this.name;
     }
     
     

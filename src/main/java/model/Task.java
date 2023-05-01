@@ -11,6 +11,10 @@ import java.util.Date;
  * @author vinic
  */
 public class Task {
+
+    public static void setIdProject(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private int id_tasks;
     private int id_projectsFk;

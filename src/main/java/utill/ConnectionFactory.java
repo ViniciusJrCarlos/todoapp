@@ -40,7 +40,7 @@ public class ConnectionFactory {
         
         }catch (Exception ex) {
         
-            throw new RuntimeException("Conex?o com Banco de dados falhou! ", ex);
+            throw new RuntimeException("Conexao com Banco de dados falhou! ", ex);
         }
     
     }
@@ -61,7 +61,7 @@ public class ConnectionFactory {
          
         } catch (Exception ex) {
          
-            throw new RuntimeException ("Conex?o com Banco de dados falhou!", ex);
+            throw new RuntimeException ("Conexao com Banco de dados falhou!", ex);
         }
     
     }
@@ -89,7 +89,7 @@ public class ConnectionFactory {
          
         } catch (Exception ex) {
          
-            throw new RuntimeException ("Conex?o com Banco de dados falhou!", ex);
+            throw new RuntimeException ("Conexao com Banco de dados falhou!", ex);
         }
     
     }
@@ -122,7 +122,7 @@ public class ConnectionFactory {
          
         } catch (Exception ex) {
          
-            throw new RuntimeException ("Conex?o com Banco de dados falhou!", ex);
+            throw new RuntimeException ("Conexao com Banco de dados falhou!", ex);
         }
     
     }
