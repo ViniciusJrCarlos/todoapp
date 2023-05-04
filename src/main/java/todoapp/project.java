@@ -13,12 +13,10 @@ import model.Project;
  */
 public class project extends Project {
 
+    /**
+     *
+     */
     public project() {
-    
     }
-
-     //project() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    //}
     
 }

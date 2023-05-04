@@ -14,14 +14,16 @@ import java.util.Date;
  */
 public class Project {
     
-    private int id_projects;
+    private int id;
     private String name;
     private String description;
     private Date createdAt;
     private Date updatedAt;
 
-    public Project(int id_projects, String name, String description, Date createdAt, Date updatedAt) {
-        this.id_projects = id_projects;
+    
+
+    public Project(int id, String name, String description, Date createdAt, Date updatedAt) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.createdAt = createdAt;
@@ -29,22 +31,15 @@ public class Project {
     }
 
     public Project() {
-        /// //To change body of generated methods, choose Tools | Templates.
-        
-        this.createdAt = new Date();
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-     //public Task() {
-    
-     //this.createdAt = new Date();
-     //}
 
     public int getId() {
-        return id_projects;
+        return id;
     }
 
-    public void setId(int id_projects) {
-        this.id_projects = id_projects;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -81,12 +76,8 @@ public class Project {
 
     @Override
     public String toString() {
-        //return "Project{" + "id_projects=" + id_projects + ", name=" + name + ", description=" + description + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
+        //return "Project{" + "id=" + id + ", name=" + name + ", description=" + description + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
         return this.name;
-    }
-    
-    
-    
-    
+    }  
     
 }

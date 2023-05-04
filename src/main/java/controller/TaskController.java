@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Task;
 import utill.ConnectionFactory;
-
+//import java.util.Date;
 
 
 /**
@@ -27,11 +27,11 @@ public class TaskController {
     public void save (Task task) {
     
         String sql = "INSERT INTO tasks ("
-                + "id_projectsFk,"
+                + "idProject,"
                 + "name," 
                 + "description,"
+                + "completed,"
                 + "notes,"
-                + "isCompleted,"
                 + "deadline,"
                 + "createdAt,"
                 + "updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -40,13 +40,14 @@ public class TaskController {
         PreparedStatement statement = null;
         
         try {
-            
+            //getIdProjectsFk
             connection = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, task.getIdProjectsFk());
+           
+            statement.setInt(1, task.getIdProject());
             statement.setString(2, task.getName());
             statement.setString(3, task.getDescription());
-            statement.setBoolean(4, task.isIsCompleted());
+            statement.setBoolean(4, task.isCompleted());
             statement.setString(5, task.getNotes());
             statement.setDate(6, new Date(task.getDeadline().getTime()));
             statement.setDate(7, new Date(task.getCreatedAt().getTime()));
@@ -71,7 +72,7 @@ public class TaskController {
     
     public void update (Task task) {
         
-        String sql = "UPDATE tasks SET id_projectsFk = ?, name = ?, description = ?, notes = ?, isCompleted = ?, deadline = ?, createdAt = ?, updatedAt = ? WHERE id_tasks = ?";
+        String sql = "UPDATE tasks SET idProject = ?, name = ?, description = ?, completed = ?, notes = ?, deadline = ?, createdAt = ?, updatedAt = ? WHERE id = ?";
         
         Connection connection = null;
         PreparedStatement statement = null;
@@ -80,16 +81,16 @@ public class TaskController {
         
             connection  = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(sql);
-            statement.setInt        (1, task.getIdProjectsFk());
-            statement.setString     (2, task.getName());
-            statement.setString     (3, task.getDescription());
-            statement.setBoolean    (4, task.isIsCompleted());
-            statement.setString     (5, task.getNotes());
-            statement.setDate       (6, new Date(task.getDeadline().getTime()));
-            statement.setDate       (7, new Date(task.getCreatedAt().getTime()));
-            statement.setDate       (8, new Date(task.getUpdatedAt().getTime()));
+            statement.setInt(1, task.getIdProject());
+            statement.setString(2, task.getName());
+            statement.setString(3, task.getDescription());
+            statement.setBoolean(4, task.isCompleted());
+            statement.setString(5, task.getNotes());
+            statement.setDate(6, new Date(task.getDeadline().getTime()));
+            statement.setDate(7, new Date(task.getCreatedAt().getTime()));
+            statement.setDate(8, new Date(task.getUpdatedAt().getTime()));
             // caso não insira rever na task.java o get id da task
-            statement.setInt        (9, task.getId());
+            statement.setInt(9, task.getId());
             statement.execute();
             
             
@@ -107,9 +108,9 @@ public class TaskController {
     
     }
     
-    public void removeById(int taskId) throws SQLException {
+    public void removeById(int taskId){
         
-        String sql = "DELETE FROM tasks WHERE id_tasks = ?";
+        String sql = "DELETE FROM tasks WHERE id = ?";
         
         Connection connection = null;
         PreparedStatement statement = null;
@@ -134,9 +135,9 @@ public class TaskController {
     
     }
     
-    public List<Task> getAll (int id_projectsFk) {
+    public List<Task> getAll (int idProject) {
         
-        String sql = "SELECT * FROM tasks WHERE id_projectsFk = ?";
+        String sql = "SELECT * FROM tasks WHERE idProject = ?";
         
         Connection connection = null;
         PreparedStatement statement  = null;
@@ -148,18 +149,20 @@ public class TaskController {
         
             connection = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, id_projectsFk);
+            statement.setInt(1, idProject);
             resultSet = statement.executeQuery();
             
             while(resultSet.next()){
                 
+                //Task task = new Task();
                 Task task = new Task();
-                task.setId(resultSet.getInt("id_tasks"));
-                task.setIdProjectsFk(resultSet.getInt("id_projectsFk"));
+                task.setId(resultSet.getInt("id"));
+                task.setIdProject(resultSet.getInt("idProject"));
                 task.setName(resultSet.getString("name"));
                 task.setDescription(resultSet.getString("description"));
+                task.setCompleted(resultSet.getBoolean("completed"));
                 task.setNotes(resultSet.getString("notes"));
-                task.setIsCompleted(resultSet.getBoolean("isCompleted"));
+                //task.isCompleted(resultSet.getBoolean("completed"));
                 task.setDeadline(resultSet.getDate("deadline"));
                 task.setCreatedAt(resultSet.getDate("createdAt"));
                 task.setUpdatedAt(resultSet.getDate("updatedAt"));

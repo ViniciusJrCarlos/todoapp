@@ -176,11 +176,13 @@ public class TaskDialogScreen extends javax.swing.JDialog {
            
             Task task = new Task();
              
-            task.setIdProjectsFk(project.getId());
+            //task.setIdProjectsFk(project.getId());
+            task.setId(project.getId());
             task.setName(jTextFieldName.getText());
             task.setDescription(jTextAreaDescription.getText());
             task.setNotes(jTextAreaNotes.getText());
-            task.setIsCompleted(false);
+            //task.setIsCompleted(false);
+            task.setCompleted(false);
             
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");      
             Date deadline = null;

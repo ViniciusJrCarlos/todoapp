@@ -76,7 +76,8 @@ public class TaskTableModel extends AbstractTableModel{
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
                 return dateFormat.format(tasks.get(rowIndex).getDeadline());
             case 3:
-                return tasks.get(rowIndex).isIsCompleted();
+                //return tasks.get(rowIndex).isIsCompleted();
+                return tasks.get(rowIndex).isCompleted();
             case 4:
                 return "";
             case 5:
@@ -94,7 +95,8 @@ public class TaskTableModel extends AbstractTableModel{
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         
-        tasks.get(rowIndex).setIsCompleted((boolean) aValue);
+        //tasks.get(rowIndex).setIsCompleted((boolean) aValue);
+        tasks.get(rowIndex).setCompleted((boolean) aValue);
     
     }
     

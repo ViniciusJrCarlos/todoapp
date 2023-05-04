@@ -27,7 +27,7 @@ import java.io.*;
 public class ProjectController {
     
     public void save(Project project) {
-        
+        /*
         String sql;
         
         sql = "INSERT INTO projects("
@@ -37,6 +37,15 @@ public class ProjectController {
         + "updatedAt) VALUES (?, ?, ?, ?)";
         //+ "VALUES (?, ?, ?, ?) ";
         
+        */
+        
+        String sql = "INSERT INTO projects"
+        + "(name, "
+        + "description, "
+        + "createdAt, "
+        + "updatedAt) "
+        + "VALUES (?, ?, ?, ?)";
+                
         Connection connection = null;
         PreparedStatement statement = null;
         
@@ -49,14 +58,15 @@ public class ProjectController {
             statement.setString(2, project.getDescription());
             statement.setDate(3, new Date(project.getCreatedAt().getTime()));
             statement.setDate(4, new Date(project.getUpdatedAt().getTime()));
-           
+           //statement.execute();
             statement.execute();
             
             
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
         
-            throw new RuntimeException("Erro ao salvar o projeto", ex);
+            throw new RuntimeException("Erro ao salvar o projeto!!! " + ex.getMessage(), ex);
             
+                
         } finally {
         
             ConnectionFactory.closeConnection(connection, statement);
@@ -64,6 +74,8 @@ public class ProjectController {
         }  
     
     }
+            
+                  
     
       public void update (Project project) {
         
@@ -75,7 +87,7 @@ public class ProjectController {
              + "description = ?, "
              + "createdAt = ?, "
              + "updatedAt = ? "
-             + "WHERE id_projects = ?";
+             + "WHERE id = ?";
             
             
                 Connection connection = null;
@@ -90,14 +102,15 @@ public class ProjectController {
                     statement.setString(2, project.getDescription());
                     statement.setDate(3, new Date(project.getCreatedAt().getTime()));
                     statement.setDate(4, new Date(project.getUpdatedAt().getTime()));
+                    //statement.setInt(5, project.getId());
+                    //statement.setInt(5, project.getId_projects());
                     statement.setInt(5, project.getId());
-
                     statement.execute();
 
 
-                } catch (SQLException ex) {
+                } catch (Exception ex) {
 
-                    throw new RuntimeException("Erro ao atualizar o projeto", ex);
+                    throw new RuntimeException("Erro ao atualizar o projeto" + ex.getMessage(), ex);
 
                 } finally {
 
@@ -132,10 +145,14 @@ public class ProjectController {
             
                 while (resultSet.next()) {
 
+                    //Project project = new Project();
+                        
                     Project project = new Project();
+                    
 
-
-                    project.setId(resultSet.getInt("id_projects"));
+                    //project.setId(resultSet.getInt("id_projects"));
+                    //project.setId_projects(resultSet.getInt("id"));
+                    project.setId(resultSet.getInt("id"));
                     project.setName(resultSet.getString("name"));
                     project.setDescription(resultSet.getString("description"));
                     project.setCreatedAt(resultSet.getDate("createdAt"));
@@ -146,9 +163,9 @@ public class ProjectController {
                 }
                 
                 
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
 
-                    throw new RuntimeException("Erro ao buscar o projeto", ex);
+                    throw new RuntimeException("Erro ao buscar o projeto" + ex.getMessage(), ex);
 
                 } finally {
 
@@ -158,10 +175,10 @@ public class ProjectController {
                 return projects;
         }
 
-        public void removeById(int id_projects) {
+        public void removeById(int id) {
             
              String sql;
-             sql = "DELETE FROM projects WHERE id_projects = ?";
+             sql = "DELETE FROM projects WHERE id = ?";
             
             Connection connection = null;
             PreparedStatement statement = null;
@@ -170,12 +187,12 @@ public class ProjectController {
                 
                 connection = ConnectionFactory.getConnection();
                 statement = connection.prepareStatement(sql);
-                statement.setInt(1, id_projects);
+                statement.setInt(1, id);
                 statement.execute();
 
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
 
-                    throw new RuntimeException("Erro ao deletar o projeto", ex);
+                    throw new RuntimeException("Erro ao deletar o projeto" + ex.getMessage(), ex);
 
                 } finally {
 
