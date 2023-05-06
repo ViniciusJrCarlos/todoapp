@@ -37,10 +37,14 @@ public class ProjectController {
         + "updatedAt) VALUES (?, ?, ?, ?)";
         //+ "VALUES (?, ?, ?, ?) ";
         
+         connection = ConnectionFactory.getConnection();
+            statement = connection.prepareStatement(sql);
+            
+            resultSet = statement.executeQuery();
+        
         */
         
-        String sql = "INSERT INTO projects"
-        + "(name, "
+        String sql = "INSERT INTO projects(name, "
         + "description, "
         + "createdAt, "
         + "updatedAt) "
@@ -56,8 +60,8 @@ public class ProjectController {
             
             statement.setString(1, project.getName());
             statement.setString(2, project.getDescription());
-            statement.setDate(3, new Date(project.getCreatedAt().getTime()));
-            statement.setDate(4, new Date(project.getUpdatedAt().getTime()));
+            statement.setDate(3, new java.sql.Date(project.getCreatedAt().getTime()));
+            statement.setDate(4, new java.sql.Date(project.getUpdatedAt().getTime()));
            //statement.execute();
             statement.execute();
             

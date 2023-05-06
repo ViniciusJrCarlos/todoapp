@@ -141,6 +141,8 @@ public class Task {
 
     public Task() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    this.createdAt = new Date();
+    
     }
 
     public int getId() {
