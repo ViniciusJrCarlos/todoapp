@@ -11,12 +11,16 @@ view/ProjectDialogScreen.java
  view.ProjectDialogScreen$1
  view.ProjectDialogScreen$2
  view.ProjectDialogScreen$2$1
-utill/DeadlineColumnCellRederer.java
- utill.DeadlineColumnCellRederer
+todoapp/Main.java
+ todoapp.Main
 model/Task.java
  model.Task
 controller/ProjectController.java
  controller.ProjectController
+controller/TaskController.java
+ controller.TaskController
+utill/DeadlineColumnCellRederer.java
+ utill.DeadlineColumnCellRederer
 utill/TaskTableModel.java
  utill.TaskTableModel
 view/TaskDialogScreen.java
@@ -34,7 +38,3 @@ view/MainScreen.java
  view.MainScreen$6
  view.MainScreen$7
  view.MainScreen$8
-controller/TaskController.java
- controller.TaskController
-todoapp/Main.java
- todoapp.Main
